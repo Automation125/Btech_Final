@@ -2,15 +2,19 @@ package testcases.Batch_2m;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -25,19 +29,25 @@ import jxl.read.biff.BiffException;
 
 public class Admin_PayGrades {
 	WebDriver d;
+	String b ;
 	@BeforeClass
 	@Parameters({"browser"})
-	public void Launch(String name)
-	{ 
+	public void Launch(String name) throws MalformedURLException
+	{  b=name;
 		if(name.equals("firefox"))
 			{
-			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-              d=new FirefoxDriver();
+			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver(new URL("http://172.16.2.105:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
+
 			}
 		else
 		{
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			d=new ChromeDriver();
+			d= new ChromeDriver() ;
+
 		}
 		d.manage().window().maximize();
 		d.manage().deleteAllCookies();
@@ -113,7 +123,7 @@ public class Admin_PayGrades {
    //------------------------------------------------------------------------
    @Test(dataProvider="TestData",priority=2,dependsOnMethods= {"tu_015"},alwaysRun=false)
    public void tu_016(String name)
-   {      
+   {      name=b+name;
 	      WebElement add= d.findElement(By.xpath("html/body/div[1]/div[3]/div[1]/div/div[2]/form/div[1]/input[1]"));
 	      add.click();
           WebElement namefield= d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[1]/input[1]"));
@@ -140,13 +150,13 @@ public class Admin_PayGrades {
 	     
 
    }
-   @Test(priority=17,dependsOnMethods= {"tu_015"},alwaysRun=false)
+   @Test(priority=17,dependsOnMethods= {"tu_016"},alwaysRun=false)
    public void tu_017()
    {//checking add  button functionality along with adding currency functionality
 	   WebElement add= d.findElement(By.xpath("html/body/div[1]/div[3]/div[1]/div/div[2]/form/div[1]/input[1]"));
 	      add.click();
 	      WebElement namefield= d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[1]/input[1]"));
-	      namefield.sendKeys("agni");
+	      namefield.sendKeys(b+"agni");
   	      d.findElement(By.id("btnSave")).click();
           WebElement currencybutton= d.findElement(By.id("btnAddCurrency"));
 	       currencybutton.click();
@@ -163,7 +173,7 @@ public class Admin_PayGrades {
 		       String s2="html/body/div[1]/div[3]/div[1]/div/div[2]/form/div[4]/table/tbody/tr["+i+"]/td[3]";
 		       WebElement name=d.findElement(By.xpath(s1));
 		       WebElement currency=d.findElement(By.xpath(s2));
-		       if(name.getText().equals("agni")&& currency.getText().equals("Aruban Florin"))
+		       if(name.getText().equals(b+"agni")&& currency.getText().equals("Aruban Florin"))
 		       {
 		    	  Assert.assertTrue(true);
 		    	  return;
@@ -176,7 +186,7 @@ public class Admin_PayGrades {
 	       
    }
    
-   @Test(priority=18)
+   @Test(priority=18,dependsOnMethods= {"tu_017"})
    public void tu_018()
    {//delete functionality
 	   d.findElement(By.xpath("html/body/div[1]/div[3]/div[1]/div/div[2]/form/div[4]/table/thead/tr/th[1]/input")).click();
@@ -200,9 +210,7 @@ public class Admin_PayGrades {
    @AfterClass
    public void close()
    {//closing the launcher
-	   
 	   d.close();
-	   
    }
 	   
    }

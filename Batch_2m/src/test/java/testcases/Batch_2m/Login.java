@@ -3,15 +3,18 @@ package testcases.Batch_2m;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
@@ -28,19 +31,24 @@ public class Login {
 	
 	@Test(priority=1)
 	@Parameters({"browser"})
-public void tu_001(String name) 
+public void tu_001(String name) throws MalformedURLException 
 {      
         WebDriver d;
-        b=name;//="firefox";
-      if(b.equals("firefox"))
+        b=name;
+      if(b.equals("firefox")) 
 		 {
 			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-             d= new FirefoxDriver();
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver( new URL("http://172.16.2.107:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
+
 		 }   
 		 else
 		 {  
 			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			 d= new ChromeDriver();
+			 d= new ChromeDriver() ;
+			 System.out.println("chrome open");
 			 
 		 }
 	d.manage().deleteAllCookies();
@@ -57,25 +65,27 @@ public void tu_001(String name)
 		Assert.assertTrue(false);
 	}
 	    d.close();
-	   
 }
 	
 	@Test(dependsOnMethods={"tu_001"},alwaysRun=true,priority=2)
 	
-	public void tu_002() 
+	public void tu_002() throws MalformedURLException 
 
 	{
          WebDriver d;
         
 		if(b.equals("firefox"))
 		 {
-			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-             d= new FirefoxDriver();
+			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver( new URL("http://172.16.2.107:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
 		 }
 		 else
 		 {  
 			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			 d= new ChromeDriver();
+			 d= new ChromeDriver() ;
 			 
 		 }
 	    d.manage().deleteAllCookies();
@@ -98,27 +108,28 @@ public void tu_001(String name)
 		}
 		if(c1==3&&c2==1&&c3==1&&c4==1);
 			Assert.assertTrue(true);
-		
-		
 		 d.close();
 		
 	}
 	
 	@Test(priority=3)
-	public void tu_003() 
+	public void tu_003() throws MalformedURLException 
 	{//acceptance login
          WebDriver d;
         
 		if(b.equals("firefox"))
 		 {
 			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-            d=new FirefoxDriver();
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver( new URL("http://172.16.2.107:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
 		 }
 		 else
 		 {  
 			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			 d= new ChromeDriver();
-			 
+			 d= new ChromeDriver() ;
+			
 		 }
 		d.manage().window().maximize();
 		d.manage().deleteAllCookies();
@@ -137,7 +148,6 @@ public void tu_001(String name)
 	    	Assert.assertTrue(false);
 	    }
 	    d.close();
-	    
 	}
 	
 	//Data providing through Excel sheet
@@ -167,19 +177,22 @@ public void tu_001(String name)
 	}
 
 	@Test(dataProvider="TestData",priority=4)
-	public void tu_004(String s1, String s2) 
+	public void tu_004(String s1, String s2) throws MalformedURLException 
 	{
            WebDriver d;
         
 		if(b.equals("firefox"))
 		 {
 			System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-            d= new FirefoxDriver();
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver( new URL("http://172.16.2.107:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
 		 }
 		 else
 		 {  
 			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			 d= new ChromeDriver();
+			 d= new ChromeDriver() ;
 			 
 		 }
 		d.manage().window().maximize();
@@ -198,7 +211,6 @@ public void tu_001(String name)
 	    else
 	    	Assert.assertTrue(false);
 	    d.close();
-	   
 	}	
 	
 }

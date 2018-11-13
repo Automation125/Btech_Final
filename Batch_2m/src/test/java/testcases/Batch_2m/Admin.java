@@ -1,15 +1,19 @@
 package testcases.Batch_2m;
 
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -19,21 +23,28 @@ import org.testng.annotations.Test;
 
 public class Admin {
 	
+	 
 	public WebDriver d;
+	public String b;
 	@BeforeClass
 	@Parameters({"browser"})
-	public void launch(String name)
+	public void launch(String name) throws MalformedURLException
 	{
-		
+		b=name;
 		 if(name.equals("firefox"))
 		 {
 			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-             d= new FirefoxDriver();
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver(new URL("http://172.16.2.105:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
+
 		 }
 		 else
 		 {  
 			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			 d= new ChromeDriver();
+			 d= new ChromeDriver() ;
+
 			 
 		 }
 		d.manage().deleteAllCookies();
@@ -125,10 +136,10 @@ public class Admin {
 	@Test(dependsOnMethods= {"tu_006"},priority=7)
 	@Parameters({"c"})
 	public void tu_007(String c)
-	{ 
+	{  c=b+c;
 		Select dp=new 	Select(d.findElement(By.id("systemUser_userType")));
 		dp.selectByIndex(0);
-		d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[2]/input[1]")).sendKeys("Russel Hamilton");
+		d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[2]/input[1]")).sendKeys("John Smith");
 		d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[3]/input")).sendKeys(c);
 		Select dp2=new Select(d.findElement(By.id("systemUser_status")));
 		dp2.selectByIndex(0);
@@ -158,7 +169,7 @@ public class Admin {
 	 @Parameters({"c"})
 	  public void tu_008(String c)
 	  { //when some data is already stored and deletion is done
-	        
+	        c=b+c;
 			WebElement e1=d.findElement(By.xpath("html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/thead/tr/th[1]/input"));
 			e1.click();
 			d.findElement(By.name("btnDelete")).click();
@@ -208,7 +219,6 @@ public class Admin {
     public void close()
     {
     	d.close();
-    	
     }
     
     

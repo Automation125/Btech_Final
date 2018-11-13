@@ -1,14 +1,18 @@
 package testcases.Batch_2m;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
@@ -17,20 +21,22 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Org_struct {
-	
-	  WebDriver d;
+	WebDriver d;
 	  int flag;
 	  String s2;
 	
 	@BeforeClass
 	@Parameters("browser")
-	public void launch(String name)
+	public void launch(String name) throws MalformedURLException
 	{ 
-        
+
 		if(name.equals("firefox"))
 		{
 		 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-          d=new FirefoxDriver();
+		 DesiredCapabilities capability = DesiredCapabilities.firefox();
+		 d= new RemoteWebDriver(new URL("http://172.16.2.105:5555/wd/hub"), capability);
+		 capability.setBrowserName("firefox");
+		 capability.setPlatform(Platform.WINDOWS);
 		}
 	else
 	{
@@ -41,14 +47,14 @@ public class Org_struct {
 	d.manage().deleteAllCookies();
 	d.manage().window().maximize();
 	d.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-    d.get("http://opensource.demo.orangehrmlive.com/");
-    WebElement e = d.findElement(By.xpath("html/body/div[1]/div/div[2]/form/div[2]/input"));
-    e.sendKeys("Admin");
-    d.findElement(By.xpath("html/body/div[1]/div/div[2]/form/div[3]/input")).sendKeys("admin");
-    WebElement e2= d.findElement(By.xpath("html/body/div[1]/div/div[2]/form/div[5]/input"));
-    e2.click();
-    WebElement e1= d.findElement(By.cssSelector("#menu_admin_viewAdminModule>b")); 
-    e1.click();
+  d.get("http://opensource.demo.orangehrmlive.com/");
+  WebElement e = d.findElement(By.xpath("html/body/div[1]/div/div[2]/form/div[2]/input"));
+  e.sendKeys("Admin");
+  d.findElement(By.xpath("html/body/div[1]/div/div[2]/form/div[3]/input")).sendKeys("admin");
+  WebElement e2= d.findElement(By.xpath("html/body/div[1]/div/div[2]/form/div[5]/input"));
+  e2.click();
+  WebElement e1= d.findElement(By.cssSelector("#menu_admin_viewAdminModule>b")); 
+  e1.click();
 	}
 	
 	@Test(priority=1)
@@ -94,14 +100,14 @@ public class Org_struct {
 		 for(WebElement e:l2)
 		 {
 			 List<WebElement>an=e.findElements(By.tagName("a"));
-              for(WebElement link:an)
-              {
-            	  if(link.getText().equals(s2))
-            	  { 
-            		flag2=1;  
-            		break;
-            	  }
-              }
+            for(WebElement link:an)
+            {
+          	  if(link.getText().equals(s2))
+          	  { 
+          		flag2=1;  
+          		break;
+          	  }
+            }
 
 		 }
 		  
@@ -157,6 +163,5 @@ public class Org_struct {
 	{
 	     d.close();
 	}
-	
 
- }
+}

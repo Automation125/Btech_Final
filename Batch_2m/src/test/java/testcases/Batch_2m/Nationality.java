@@ -1,14 +1,18 @@
 package testcases.Batch_2m;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
@@ -17,19 +21,22 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Nationality {
-	
+
 	WebDriver d;
 	int flag,j;
 	int flag2;
 	String actual,xpath;
 	@BeforeClass
 	@Parameters({"browser"})
-	public void Launch(String name)
+	public void Launch(String name) throws MalformedURLException
 	{  
 		if(name.equals("firefox"))
 			{
 			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-              d=new FirefoxDriver();
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver( new URL("http://172.16.2.105:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
 			}
 		else
 		{
@@ -139,5 +146,3 @@ public class Nationality {
 	}
 	
 }
-
-

@@ -2,15 +2,19 @@ package testcases.Batch_2m;
 
 
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,21 +24,26 @@ import org.testng.annotations.Test;
 
 public class Admin_job {
 	public WebDriver d;
+	String b;
 	
 	@BeforeClass
 	@Parameters({"browser"})
-	public void Jobpage(String name)
+	public void Jobpage(String name) throws MalformedURLException
 	{ 
-	  
+	    b=name;
 		if(name.equals("firefox"))
 		 {
 			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chaitu\\Desktop\\geckodriver.exe");
-             d= new FirefoxDriver();
+			 DesiredCapabilities capability = DesiredCapabilities.firefox();
+			 d= new RemoteWebDriver( new URL("http://172.16.2.107:5555/wd/hub"),capability);
+			 capability.setBrowserName("firefox");
+			 capability.setPlatform(Platform.WINDOWS);
+
 		 }
 		 else
 		 {  
 			 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chaitu\\Desktop\\chromedriver.exe");
-			 d= new ChromeDriver();
+			 d= new ChromeDriver() ;
 			 
 		 }
 		d.manage().window().maximize();
@@ -86,7 +95,7 @@ public class Admin_job {
 		}
 		
 		WebElement e2=d.findElement(By.id("jobTitle_jobTitle"));
-		e2.sendKeys("dailyType11");
+		e2.sendKeys(b+"dailyType11");
 		d.findElement(By.id("jobTitle_jobDescription")).sendKeys("Non perminant,daily wages work people");
 		//uploading file using wedriver
 		WebElement fileinput=d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[3]/input"));
@@ -100,7 +109,7 @@ public class Admin_job {
 			for(int i=1;i<rows.size();i++)
 			{
 				xpath="html/body/div[1]/div[3]/div[1]/div/div[2]/form/div[4]/table/tbody/tr["+i+"]/td[2]";
-				if(d.findElement(By.xpath(xpath)).getText().equals("dailyType11"))
+				if(d.findElement(By.xpath(xpath)).getText().equals(b+"dailyType11"))
 					{
 					  f=1;break;
 					}
@@ -129,7 +138,7 @@ public class Admin_job {
 			Assert.assertTrue(false);
 		}
 		WebElement e2=d.findElement(By.id("jobTitle_jobTitle"));
-		e2.sendKeys("dailyType11");
+		e2.sendKeys(b+"dailyType11");
 		boolean  b= d.findElement(By.xpath("html/body/div[1]/div[3]/div/div[2]/form/fieldset/ol/li[1]/span")).isDisplayed();
 		if(b==true)
         {
@@ -161,8 +170,8 @@ public class Admin_job {
 		{
 			Assert.assertTrue(true);
 		}
-		
-			
+		else
+			Assert.assertTrue(false);
 			
     }
    
@@ -170,7 +179,6 @@ public class Admin_job {
    public void close()
    {
    	d.close();
-   	
    }
     
 	
