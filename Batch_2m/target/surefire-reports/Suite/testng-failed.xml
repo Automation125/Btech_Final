@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Suite]">
+  <parameter name="c" value="shreyasmedia113154658d"/>
+  <parameter name="browser" value="chrome"/>
+  <test name="Test4.1(failed)">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="testcases.Batch_2m.Employee_Class">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Employee_Class -->
+      <class name="testcases.Batch_2m.Admin_job">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="Jobpage"/>
+          <include name="Jobpage"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_job -->
+      <class name="testcases.Batch_2m.Org_Gen_Info">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_Gen_Info -->
+      <class name="testcases.Batch_2m.Nationality">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Nationality -->
+      <class name="testcases.Batch_2m.Org_struct">
+        <methods>
+          <include name="tu_026"/>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="tu_024"/>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="tu_025"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_struct -->
+      <class name="testcases.Batch_2m.Admin">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin -->
+      <class name="testcases.Batch_2m.Admin_PayGrades">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_PayGrades -->
+    </classes>
+  </test> <!-- Test4.1(failed) -->
+  <test name="Test4(failed)" parallel="classes">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="testcases.Batch_2m.Employee_Class">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Employee_Class -->
+      <class name="testcases.Batch_2m.Admin_job">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="Jobpage"/>
+          <include name="Jobpage"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_job -->
+      <class name="testcases.Batch_2m.Org_Gen_Info">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_Gen_Info -->
+      <class name="testcases.Batch_2m.Nationality">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Nationality -->
+      <class name="testcases.Batch_2m.Org_struct">
+        <methods>
+          <include name="tu_026"/>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="tu_024"/>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="tu_025"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_struct -->
+      <class name="testcases.Batch_2m.Admin">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin -->
+      <class name="testcases.Batch_2m.Admin_PayGrades">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_PayGrades -->
+    </classes>
+  </test> <!-- Test4(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="29137" started-at="2018-03-14T09:42:52Z" finished-at="2018-03-14T09:43:21Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="29137" started-at="2018-03-14T09:42:52Z" finished-at="2018-03-14T09:43:21Z">
+      <class name="testcases.Batch_2m.Org_struct">
+        <test-method status="PASS" signature="launch(java.lang.String)[pri:0, instance:testcases.Batch_2m.Org_struct@18be83e4]" name="launch" is-config="true" duration-ms="19173" started-at="2018-03-14T15:12:52Z" finished-at="2018-03-14T15:13:11Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launch -->
+        <test-method status="PASS" signature="tu_024()[pri:0, instance:testcases.Batch_2m.Org_struct@18be83e4]" name="tu_024" duration-ms="2526" started-at="2018-03-14T15:13:11Z" finished-at="2018-03-14T15:13:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tu_024 -->
+        <test-method status="PASS" signature="tu_025()[pri:0, instance:testcases.Batch_2m.Org_struct@18be83e4]" name="tu_025" duration-ms="3675" started-at="2018-03-14T15:13:13Z" depends-on-methods="testcases.Batch_2m.Org_struct.tu_024" finished-at="2018-03-14T15:13:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tu_025 -->
+        <test-method status="PASS" signature="tu_026()[pri:0, instance:testcases.Batch_2m.Org_struct@18be83e4]" name="tu_026" duration-ms="3711" started-at="2018-03-14T15:13:17Z" depends-on-methods="testcases.Batch_2m.Org_struct.tu_025" finished-at="2018-03-14T15:13:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tu_026 -->
+        <test-method status="PASS" signature="close()[pri:0, instance:testcases.Batch_2m.Org_struct@18be83e4]" name="close" is-config="true" duration-ms="16" started-at="2018-03-14T15:13:21Z" finished-at="2018-03-14T15:13:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- testcases.Batch_2m.Org_struct -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

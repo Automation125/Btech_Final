@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <parameter name="c" value="virat811112117"/>
+  <parameter name="browser" value="chrome"/>
+  <test name="Test1.1(failed)">
+    <parameter name="c" value="virat811111117"/>
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="testcases.Batch_2m.Org_Gen_Info">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_Gen_Info -->
+      <class name="testcases.Batch_2m.Employee_Class">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Employee_Class -->
+      <class name="testcases.Batch_2m.Login">
+        <methods>
+          <include name="tu_001"/>
+          <include name="tu_002"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Login -->
+      <class name="testcases.Batch_2m.Admin">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin -->
+      <class name="testcases.Batch_2m.Admin_job">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="Jobpage"/>
+          <include name="Jobpage"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_job -->
+      <class name="testcases.Batch_2m.Admin_PayGrades">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_PayGrades -->
+    </classes>
+  </test> <!-- Test1.1(failed) -->
+  <test name="Test1(failed)">
+    <parameter name="c" value="virat811112117"/>
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="testcases.Batch_2m.Org_Gen_Info">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_Gen_Info -->
+      <class name="testcases.Batch_2m.Employee_Class">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Employee_Class -->
+      <class name="testcases.Batch_2m.Login">
+        <methods>
+          <include name="tu_001"/>
+          <include name="tu_002"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Login -->
+      <class name="testcases.Batch_2m.Admin">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin -->
+      <class name="testcases.Batch_2m.Admin_job">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="Jobpage"/>
+          <include name="Jobpage"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_job -->
+      <class name="testcases.Batch_2m.Admin_PayGrades">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_PayGrades -->
+    </classes>
+  </test> <!-- Test1(failed) -->
+  <test name="Test3.1(failed)">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="testcases.Batch_2m.Org_Gen_Info">
+        <methods>
+          <include name="tu_023"/>
+          <include name="tu_022"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Org_Gen_Info -->
+      <class name="testcases.Batch_2m.Employee_Class">
+        <methods>
+          <include name="launch"/>
+          <include name="launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Employee_Class -->
+      <class name="testcases.Batch_2m.Admin">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="launch"/>
+          <include name="launch"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin -->
+      <class name="testcases.Batch_2m.Admin_job">
+        <methods>
+          <include name="close"/>
+          <include name="close"/>
+          <include name="Jobpage"/>
+          <include name="Jobpage"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_job -->
+      <class name="testcases.Batch_2m.Admin_PayGrades">
+        <methods>
+          <include name="Launch"/>
+          <include name="Launch"/>
+          <include name="close"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- testcases.Batch_2m.Admin_PayGrades -->
+    </classes>
+  </test> <!-- Test3.1(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,70 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" >
+	<test name="Test1.1">
+		  <parameter name="browser" value="firefox"></parameter>
+	       <parameter name="c" value="shreyasmedia12415648"></parameter>
+	       <classes>
+		     <class name="testcases.Batch_2m.Login"/>
+	    	 <class name="testcases.Batch_2m.Admin"/>
+	     </classes>
+		  </test>
+		  
+		  <test name="Test1" parallel="classes" thread-count="10">
+		  <parameter name="browser" value="chrome"></parameter>
+	       <parameter name="c" value="shreyasmedia113154658d"></parameter>
+	       <classes>
+		     <class name="testcases.Batch_2m.Login"/>
+	          <class name="testcases.Batch_2m.Admin"/>
+	       </classes>
+		  </test>
+
+
+    <test name="Test2" parallel="classes" thread-count="10">
+	  <parameter name="browser" value="chrome"></parameter>
+       <classes>
+	     <class name="testcases.Batch_2m.Admin_job"/>
+	     <class name="testcases.Batch_2m.Admin_PayGrades"/>
+	    </classes>
+	  </test> 
+	  
+	  <test name="Test2.1" >
+	  <parameter name="browser" value="firefox"></parameter>
+       <classes>
+	      <class name="testcases.Batch_2m.Admin_job"/>
+	      <class name="testcases.Batch_2m.Admin_PayGrades"/>
+	   </classes>
+	  </test>
+	  
+	  <test name="Test3.1" >
+	  <parameter name="browser" value="firefox"></parameter>
+       <classes>
+	     <class name="testcases.Batch_2m.Employee_Class"/>
+	     <class name="testcases.Batch_2m.Org_Gen_Info" />
+	   </classes>
+	  </test>
+
+     <test name="Test3"  parallel="classes">
+	  <parameter name="browser" value="chrome"></parameter>
+       <classes>
+	     <class name="testcases.Batch_2m.Employee_Class"/>
+	     <class name="testcases.Batch_2m.Org_Gen_Info"/>
+	    </classes>
+	  </test>
+	  
+	  <test name="Test4.1" >
+	  <parameter name="browser" value="firefox"></parameter>
+       <classes>
+       <class name="testcases.Batch_2m.Org_struct" />
+       <class name="testcases.Batch_2m.Nationality"/>
+	 </classes>
+	  </test>
+
+     <test name="Test4"  parallel="classes">
+	  <parameter name="browser" value="chrome"></parameter>
+       <classes>
+         <class name="testcases.Batch_2m.Org_struct" /> 
+	     <class name="testcases.Batch_2m.Nationality"/>
+	   </classes>
+	  </test>
+	  
+</suite> 
